@@ -1,0 +1,19 @@
+[Unit]
+Description=Airflow scheduler daemon
+After=network.target postgresql.service mysql.service redis.service rabbitmq-server.service
+Wants=postgresql.service mysql.service redis.service rabbitmq-server.service
+[Service]
+#PIDFile=/run/airflow/webserver.pid
+#EnvironmentFile=/home/airflow/airflow.env
+User=user
+Group=user
+Type=simple
+ExecStart=/bin/bash -c 'export AIRFLOW_HOME=/home/user/airflow ; airflow scheduler '
+#ExecReload=/bin/kill -s HUP $MAINPID
+#ExecStop=/bin/kill -s TERM $MAINPID
+Restart=on-failure
+RestartSec=42s
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
+
