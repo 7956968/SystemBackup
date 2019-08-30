@@ -1,0 +1,26 @@
+Changes required in " airflow/airflow.cfg   "  are as follows
+change :
+
+athenticate  = False
+to
+authenticate = True
+
+
+filter_by_owner = False
+ to 
+filter_by_owner = True
+
+rbac = false
+to 
+rbac = true
+
+
+And use following command to create user
+
+airflow create_user -r Admin -u admin -e vinayp@alohatechnologydev.com -f admin -l user -p ubuntu
+                                  ^                                          ^               ^ 
+                                role                                        user name        password
+
+- after that kill airflow process and access from browswer
+
+
