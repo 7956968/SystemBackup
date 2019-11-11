@@ -1,0 +1,419 @@
+   
+Ticket No.    CICD Task                                          
+
+
+1. TEP-2384     CI/CD : Concourse : Check setup on local machine environment.  > Placed in CICD Epic
+
+2. 
+
+
+
+
+
+
+
+
+
+
+Ticket No.    System Architecture  
+
+1.TEP-1182	block sprint & nightly port direct access	
+
+2.TEP-1195	TEP-R Convert to nginx
+
+3.TEP-2468	GPU Instances : Deploy Configurations to through ansible-playbook	
+
+4.TEP-2381	Create ansible-playbook for listed setups.
+
+5.TEP-2201	Ansible : PoC on ansible roles features
+
+6.TEP-2124 	Ansible : TEP-R test env deployment.
+
+7.TEP-2066	Setup Ansible host on TEPCC.
+
+8.TEP-1966	New ES Container setup on TEP1.0
+
+9.TEP-1855	Setup OmniDB on TEP-R system
+
+10.TEP-1393	TEP2.0 Nginx redirect with port block
+
+11.TEP-1381	Remote Host Identification Failure
+
+12.TEP-1422 	New packages & linux dependencies in R
+
+13.TEP-1225 	Hardening TEP-R Docker setup
+
+14.TEP-1256	Docker swarm	
+
+15.TEP-1212	Tracking	
+
+16.TEP-1210	LF IT Compliance Scans
+
+17.TEP-1195	TEP-R Convert to nginx
+
+18.
+
+
+
+
+No Ticket Available
+
+1. Connectivity Check :
+
+Need to check if can setup the SSL certs on a docker host and link/use it to control the application security on another docker host.
+
+2.REDIS Authentication
+
+3.TEP 1.0 SSL Certificate
+
+4.TEP-R block external port
+
+5.
+
+
+
+TEP-Production-SystemSetup
+
+1.TEP-3505
+
+Tittle : Setup Docker / Ansible/ Portainer / etc on PROD UI EC2
+
+Discription : Setup
+
+Nginx server
+
+Nginx settings (TLSv1.2, CIphers, blocking, etc)
+
+Ansible components (if required) [Has python dependencies]
+
+Docker
+
+Docker compose
+
+Portainer components (if required)
+
+Docker swarm components (if required)
+
+
+
+2.TEP-3506
+
+
+Tittle : Setup Docker / Ansible/ Portainer / etc on AC GPU PROD EC2
+
+Description :
+
+Setup:
+
+Ansible components 
+
+Docker
+
+Docker compose
+
+Portainer components 
+
+Docker swarm components
+
+AWS Configure
+
+3.TEP-3507
+
+
+Tittle : Setup Docker / Ansible/ Portainer / etc on VS GPU PROD EC2
+
+Description
+
+Setup:
+
+Ansible components
+
+Docker
+
+Docker compose
+
+Portainer components
+
+Docker swarm components
+
+4. TEP-3509	
+
+Tittle : Setup VS docker etc on VS GPU PROD EC2
+
+Description
+
+Ensure VS docker is up & running. This docker should start on a system reboot as well.
+
+5.  TEP-3510
+
+Tittle : CI/CD : Production Jenkins pipeline
+
+
+Description
+
+This will flow from the Master branches of TEP-REST & TEP-UI-2.0
+
+Work Log : 
+
+UI part is coming from branch : develop-testing.
+
+REST part is coming from branch :  TEP-3636-ci-cd-tep-rest-prod-testing
+
+Will update this definitions once dev work get compiled and megred to master .
+
+Setup Jenkins pipeline [script based] to be triggered manually TEP-Production .
+
+Created prod-scripts for deployment.
+
+  Remove nginx redirect  [--base-href /tep-prod] replacement definition from tep-prod.sh.
+
+  Added replacement tep.lfapps.io  definition in api url creation in tep-prod.sh
+
+Committed the prod-scripts to Bit bucket repo.  
+
+
+
+
+6 .  TEP-3531
+
+Tittle : Setup REST/UI Docker on Production EC2
+
+Work  Log : 
+
+Created a proj_dir : TEP-Production  on location /home/alohase/.
+
+Clonned TEP-UI-2.0/master & TEP-REST/master branches in this location.
+
+Modified the env specific configuration’s in UI/REST code.
+
+Build the image and bring up the containers : dokcer-compose up.
+
+7.  TEP-3532
+
+Tiitle : Create Nginx URLs for TEP on production
+
+Description
+
+Set Nginx redirection for UI/REST TEP-Production setup.
+
+Test and validate.
+
+Work Log : 
+
+Rohan Chandorikar
+August 30, 2019, 8:38 AM
+
+Added location block code for UI redirection in nginx.conf
+
+Added location block code for REST redirection in nginx.conf  [/api1].
+
+TEP-Production URL : 
+
+http://10.65.15.106/tep-prod
+
+
+
+8. TEP-3570
+
+Tittle : Jenkins CI/CD for production
+
+Description
+
+setup jenkins pipeline for CI/CD for TEP - Production
+
+
+9 . TEP-3576
+
+Tittle : VSPROD : Java Update
+
+Description
+
+ Update Java version  for  VSPROD machine [10.65.15.63].
+
+ Update to version = 1.12.0_1.
+
+ Test and validate.
+
+
+10 . TEP-3577
+
+
+tittle : ACPROD : Java Update
+
+Description
+
+ Update Java version  for  ACPROD machine [10.65.15.51].
+
+ Update to version = 1.12.0_1.
+
+ Test and validate.
+
+ 
+11 . TEP:3578
+
+Tittle : TEPPROD : Update Nginx Version
+
+Description
+
+ Update Nginx version  for  TEPPROD machine [10.65.15.106].
+
+ Current Installed version = 1.14.0 [multiple vulnerabilities].
+
+ Update to version = 1.17.3.
+
+ Test and validate.
+
+
+12 . TEP:3580
+
+tittle: TEPPROD : Redirect Default to TEP page.
+
+Description :
+
+ Welcome page is Nginx default page.
+
+ Redirect it to TEP page.
+
+ Test and validate.
+
+
+13 : TEP:3618
+
+Tittle : TEPPROD : robots.txt file missing
+
+Description : 
+Description
+
+ System IP : [10.65.15.106].
+
+ Create robots.txt file.
+
+ Place it in the TEP-Production project dir.
+
+ Test and validate.
+
+14 : TEP:3664
+
+
+Tittle : TEP2.0 : Create a replica of tep-prod  
+
+Description
+
+ Spin up PROD docker on TEP2.0 server.
+
+ Consists of all prod endpoints for basic UI and REST testings.
+
+ Create Nginx redirection to /tep-prod.
+
+ Test and validate.
+
+
+15 . TEP:3665
+
+Tittle : TEP-PROD : Update prod system
+
+
+Description
+
+ After basic testing for UI and REST perform on `tep.lfuat.net/tep-prod`.
+
+ Update the prod docker system with same.
+
+ Test and validate the setup
+
+
+16.  TEP:3666
+
+Tittle : TEP-PROD : Maintenance Message
+
+
+Description
+
+ Setup Maintenance page for Production site.
+
+ At the time of Deployment this page should get displayed..
+
+ Test and validate the setup.
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
